@@ -1,0 +1,8 @@
+prefix=/home/seraaxi/turtle_ws/devel
+
+Name: ethzasl_extrinsic_calibration
+Description: Description of ethzasl_extrinsic_calibration
+Version: 0.9.6
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy tf
