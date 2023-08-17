@@ -1,4 +1,4 @@
-# PiCar-MultiMapping
+# PiCar-QRMultiMapping
 
 ## Project Overview:
 
