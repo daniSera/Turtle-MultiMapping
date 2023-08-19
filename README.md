@@ -72,7 +72,31 @@ into your workspace at the defined positions. In this way you will obtain the QR
 
 #### 2. Creake QR codes form scratch
 
-_TODO_
+For this the repo [gazebo_models](https://github.com/mikaelarguedas/gazebo_models) was used for the creation of the models.
+In order to create the proper QR-codes is necessary to change the code since for `Vision Visp` it is necessary to print a black square around the QR-code requested. In order to do this it is necessary to change the code at line 93 with 
+
+```python
+if white_contour_px > 0:
+        convert_cmd = "convert %s -bordercolor white -border %dx%d %s" % (
+            image_dest_path, 57,
+            57, image_dest_path)
+        if args.verbose:
+            print(convert_cmd)
+        os.system(convert_cmd)
+        convert_cmd = "convert %s -bordercolor black -border %dx%d %s" % (
+            image_dest_path, 150,
+            150, image_dest_path)
+        if args.verbose:
+            print(convert_cmd)
+        os.system(convert_cmd)
+        convert_cmd = "convert %s -bordercolor white -border %dx%d %s" % (
+            image_dest_path, 10,
+            10, image_dest_path)
+        if args.verbose:
+            print(convert_cmd)
+        os.system(convert_cmd)
+```
+This will set the border as required. Be aware that changes might be required, depending on the dimension of the original QR-code.
 
 ### Try the installaion
 
