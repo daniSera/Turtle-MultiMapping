@@ -125,7 +125,7 @@ rtabmap-databaseViewer
 To try the correct installation run
 
 ```bash
-roslaunch turtlebot3_gazebo turtlebot3_visp_world.launch
+roslaunch multi_mapping turtlebot3_visp_world.launch
 ```
 
 and in a different terminal, in order to move he robot
