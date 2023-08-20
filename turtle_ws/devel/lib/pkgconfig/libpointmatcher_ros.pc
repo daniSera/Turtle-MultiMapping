@@ -1,8 +1,0 @@
-prefix=/home/seraaxi/turtle_ws/devel
-
-Name: libpointmatcher_ros
-Description: Description of libpointmatcher_ros
-Version: 0.9.6
-Cflags: -I/home/seraaxi/turtle_ws/src/icp_mapping_QPEP/libpointmatcher_ros/include
-Libs: -L${prefix}/lib -lpointmatcher_ros
-Requires: roscpp sensor_msgs nav_msgs tf tf_conversions eigen_conversions libpointmatcher
