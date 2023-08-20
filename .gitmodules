@@ -1,0 +1,8 @@
+[submodule "turtle_ws/src/turtlebot3_simulations"]
+	path = turtle_ws/src/turtlebot3_simulations
+	url = https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+	branch = kinetic-devel
+[submodule "turtle_ws/src/vision_visp"]
+	path = turtle_ws/src/vision_visp
+	url = https://github.com/lagadic/vision_visp.git
+	branch = noetic
