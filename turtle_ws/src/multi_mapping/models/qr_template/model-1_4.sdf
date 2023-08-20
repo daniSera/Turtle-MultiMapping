@@ -1,0 +1,15 @@
+<?xml version="1.0" ?><sdf version="1.4">
+  <model name="qr_template">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://qr_template/meshes/qr_template.dae</uri>
+          <scale>0.4 0.4 0.4</scale></mesh>
+        </geometry>
+      </visual>
+    </link>
+    <pose>0.445343 -1.8179 0 0 -0 0</pose>
+  </model>
+</sdf>

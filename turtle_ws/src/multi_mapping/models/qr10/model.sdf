@@ -1,0 +1,15 @@
+<?xml version="1.0" ?><sdf version="1.6">
+  <model name="qr10">
+    <static>true</static>
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://qr10/meshes/qr10.dae</uri>
+          <scale>0.4 0.4 0.4</scale></mesh>
+        </geometry>
+      </visual>
+    </link>
+    <pose>-1.25 2.25 0 0 -0 -0.5</pose>
+  </model>
+</sdf>
