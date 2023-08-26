@@ -6,3 +6,6 @@
 	path = turtle_ws/src/vision_visp
 	url = https://github.com/lagadic/vision_visp.git
 	branch = noetic
+[submodule "turtle_ws/src/map_merger"]
+	path = turtle_ws/src/map_merger
+	url = https://github.com/jacobmoroni/map_merger.git
