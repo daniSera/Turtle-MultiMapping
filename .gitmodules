@@ -13,3 +13,6 @@
 [submodule "turtle_ws/src/map_merger"]
 	path = turtle_ws/src/map_merger
 	url = https://github.com/jacobmoroni/map_merger.git
+[submodule "turtle_ws/src/m-explore"]
+	path = turtle_ws/src/m-explore
+	url = https://github.com/hrnr/m-explore.git
