@@ -22,7 +22,8 @@
 
   <arg name="with_camera" default="true"/>
   <arg name="localization" default="false"/>
-  <arg name="database_path" default="~/.ros/rtabmap.db"/>
+  <arg name="database_path_0" default="~/.ros/rtabmap_0.db"/>
+  <arg name="database_path_1" default="~/.ros/rtabmap_1.db"/>
   <arg     if="$(arg localization)" name="rtabmap_args" default=""/>
   <arg unless="$(arg localization)" name="rtabmap_args" default="-d"/>
 
@@ -35,30 +36,36 @@
   -->
 
   <group ns="rtabmap_0">
-    <node if="$(eval model=='waffle')" pkg="rtabmap_sync" type="rgbd_sync" name="rgbd_sync" output="screen">
+    <node if="$(eval model=='waffle')" pkg="rtabmap_sync" type="rgbd_sync" name="rgbd_sync" output="log">
       <remap from="rgb/image"         to="/tb3_0/camera/rgb/image_raw"/>
       <remap from="depth/image"       to="/tb3_0/camera/depth/image_raw"/>
       <remap from="rgb/camera_info"   to="/tb3_0/camera/rgb/camera_info"/>
+      <remap from="rgbd_image"        to="rgbd_image"/> <!-- output -->
+      <param name="approx_sync"       value="false"/> 
     </node>
 
-    <node name="rtabmap" pkg="rtabmap_slam" type="rtabmap" output="screen" args="$(arg rtabmap_args)">
-      <param name="database_path"       type="string" value="$(arg database_path)"/>
-      <param name="frame_id"            type="string" value="/tb3_0/base_footprint"/>
-      <param name="subscribe_rgb"   type="bool" value="false"/>
-      <param name="subscribe_depth" type="bool" value="false"/>
-      <param     if="$(eval model=='waffle')" name="subscribe_rgbd" type="bool" value="true"/>
-      <param unless="$(eval model=='waffle')" name="subscribe_rgbd" type="bool" value="false"/>
-      <param name="subscribe_scan"      type="bool"   value="true"/>
-      <param name="approx_sync"         type="bool"   value="true"/>
+    <node name="rtabmap" pkg="rtabmap_slam" type="rtabmap" output="log" args="$(arg rtabmap_args)">
+      <param name="database_path"           type="string" value="$(arg database_path_0)"/>
+      <param name="frame_id"                type="string" value="/tb3_0/base_footprint"/>
+      <param name="subscribe_depth"         type="bool"   value="false"/>
+      <param name="subscribe_rgb"           type="bool"   value="false"/>
+      <param name="subscribe_rgbd"          type="bool"   value="true"/>
+      <param name="gen_depth"               type="bool"   value="true"/>
+      <param name="gen_depth_decimation"    type="int"    value="4"/>
+      <param name="approx_sync"             type="bool"   value="false"/>
+      <param name="queue_size"              type="int"    value="10"/>
 
-      <!-- use actionlib to send goals to move_base -->
-      <param name="use_action_for_goal" type="bool" value="false"/>
-      <!--<remap from="move_base"            to="/tb3_0/move_base"/>-->
+      <param name="RGBD/AngularUpdate"        type="string" value="0.01"/>
+      <param name="RGBD/LinearUpdate"         type="string" value="0.01"/>
+      <param name="RGBD/OptimizeFromGraphEnd" type="string" value="false"/>
+      <param name="Mem/ImagePreDecimation"  type="int" value="2"/>
+      <param name="Mem/ImagePostDecimation"  type="int" value="2"/> 
+      <param name="Odom/ImageDecimation"  type="int" value="2"/>
+      <param name="Kp/MaxDepth" type="string" value="2"/>
+      <param name="Mem/ReduceGraph" type="bool" value="true"/>
 
       <!-- inputs -->
-      <remap from="scan"            to="/tb3_0/scan"/>
       <remap from="odom"            to="/tb3_0/odom"/>
-      <remap from="rgbd_image"       to="rgbd_image"/>
 
       <!-- output -->
       <remap from="grid_map" to="/tb3_0/map"/>
@@ -87,30 +94,48 @@
   </group>
 
   <group ns="rtabmap_1">
-    <node if="$(eval model=='waffle')" pkg="rtabmap_sync" type="rgbd_sync" name="rgbd_sync" output="screen">
+    <node if="$(eval model=='waffle')" pkg="rtabmap_sync" type="rgbd_sync" name="rgbd_sync" output="log">
       <remap from="rgb/image"         to="/tb3_1/camera/rgb/image_raw"/>
       <remap from="depth/image"       to="/tb3_1/camera/depth/image_raw"/>
       <remap from="rgb/camera_info"   to="/tb3_1/camera/rgb/camera_info"/>
     </node>
 
-    <node name="rtabmap" pkg="rtabmap_slam" type="rtabmap" output="screen" args="$(arg rtabmap_args)">
-      <param name="database_path"       type="string" value="$(arg database_path)"/>
+    <node name="rtabmap" pkg="rtabmap_slam" type="rtabmap" output="log" args="$(arg rtabmap_args)">
+      <param name="database_path"       type="string" value="$(arg database_path_1)"/>
       <param name="frame_id"            type="string" value="/tb3_1/base_footprint"/>
+      <param name="subscribe_depth"         type="bool"   value="false"/>
+      <param name="subscribe_rgb"           type="bool"   value="false"/>
+      <param name="subscribe_rgbd"          type="bool"   value="true"/>
+      <param name="gen_depth"               type="bool"   value="true"/>
+      <param name="gen_depth_decimation"    type="int"    value="4"/>
+      <param name="approx_sync"             type="bool"   value="false"/>
+      <param name="queue_size"              type="int"    value="10"/>
+      <param name="RGBD/AngularUpdate"        type="string" value="0.01"/>
+      <param name="RGBD/LinearUpdate"         type="string" value="0.01"/>
+      <param name="RGBD/OptimizeFromGraphEnd" type="string" value="false"/>
+      <param name="Mem/ImagePreDecimation"  type="int" value="2"/>
+      <param name="Mem/ImagePostDecimation"  type="int" value="2"/> 
+      <param name="Odom/ImageDecimation"  type="int" value="2"/>
+      <param name="Kp/MaxDepth" type="string" value="2"/>
+      <param name="Mem/ReduceGraph" type="bool" value="true"/>
+      <!--
       <param name="subscribe_rgb"   type="bool" value="false"/>
       <param name="subscribe_depth" type="bool" value="false"/>
       <param     if="$(eval model=='waffle')" name="subscribe_rgbd" type="bool" value="true"/>
       <param unless="$(eval model=='waffle')" name="subscribe_rgbd" type="bool" value="false"/>
       <param name="subscribe_scan"      type="bool"   value="true"/>
       <param name="approx_sync"         type="bool"   value="true"/>
+      <param name="gen_depth_decimation" type="double"   value="10"/>
+      -->
+
+      <!--<param name="gen_depth"               type="bool"   value="true"/>
+      <param name="gen_depth_decimation"    type="int"    value="5"/>-->
 
       <!-- use actionlib to send goals to move_base -->
-      <param name="use_action_for_goal" type="bool" value="false"/>
       <!--<remap from="move_base"            to="/tb3_1/move_base"/>-->
 
       <!-- inputs -->
-      <remap from="scan"            to="/tb3_1/scan"/>
       <remap from="odom"            to="/tb3_1/odom"/>
-      <remap from="rgbd_image"       to="rgbd_image"/>
 
       <!-- output -->
       <remap from="grid_map" to="/tb3_1/map"/>
