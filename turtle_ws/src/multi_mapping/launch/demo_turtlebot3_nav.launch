@@ -63,6 +63,9 @@
       <param name="Odom/ImageDecimation"  type="int" value="2"/>
       <param name="Kp/MaxDepth" type="string" value="2"/>
       <param name="Mem/ReduceGraph" type="bool" value="true"/>
+      <param name="Rtabmap/DetectionRate"        type="string" value="2"/>
+      <param name="Grid/RayTracing"              type="string" value="true"/>
+      <param name="Grid/CellSize"                type="string" value="0.05"/>
 
       <!-- inputs -->
       <remap from="odom"            to="/tb3_0/odom"/>
@@ -110,6 +113,7 @@
       <param name="gen_depth_decimation"    type="int"    value="4"/>
       <param name="approx_sync"             type="bool"   value="false"/>
       <param name="queue_size"              type="int"    value="10"/>
+
       <param name="RGBD/AngularUpdate"        type="string" value="0.01"/>
       <param name="RGBD/LinearUpdate"         type="string" value="0.01"/>
       <param name="RGBD/OptimizeFromGraphEnd" type="string" value="false"/>
@@ -118,6 +122,9 @@
       <param name="Odom/ImageDecimation"  type="int" value="2"/>
       <param name="Kp/MaxDepth" type="string" value="2"/>
       <param name="Mem/ReduceGraph" type="bool" value="true"/>
+      <param name="Rtabmap/DetectionRate"        type="string" value="2"/>
+      <param name="Grid/RayTracing"              type="string" value="true"/>
+      <param name="Grid/CellSize"                type="string" value="0.05"/>
       <!--
       <param name="subscribe_rgb"   type="bool" value="false"/>
       <param name="subscribe_depth" type="bool" value="false"/>
@@ -177,7 +184,7 @@
 
   <!-- Run the multirobot_map_merging node -->
   <node pkg="multirobot_map_merge" type="map_merge" respawn="false" name="map_merge">
-    <param name="robot_map_topic" value="map"/> <!--grid_prob_map-->
+    <param name="robot_map_topic" value="/map"/> <!--grid_prob_map-->
     <!--<param name="robot_map_updates_topic" value="grid_prob_map_updates" /> -->
     <param name="robot_namespace" value="tb3"/>
     <param name="merged_map_topic" value="total_map"/>
@@ -185,7 +192,7 @@
     <param name="known_init_poses" value="true"/>
     <param name="merging_rate" value="0.5"/>
     <param name="discovery_rate" value="0.05"/>
-    <param name="estimation_rate" value="0.1"/>
+    <param name="estimation_rate" value="10"/>
     <param name="estimation_confidence" value="1.0"/>
 
     <!-- remap the individual maps from the local map (published by SLAM) to the expanded map (published by the map_expansion node)

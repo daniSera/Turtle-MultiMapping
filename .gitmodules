@@ -16,3 +16,6 @@
 [submodule "turtle_ws/src/m-explore"]
 	path = turtle_ws/src/m-explore
 	url = https://github.com/hrnr/m-explore.git
+[submodule "turtle_ws/src/Multirobot-Exploration-and-Mapping"]
+	path = turtle_ws/src/Multirobot-Exploration-and-Mapping
+	url = https://github.com/matteomastrogiuseppe/Multirobot-Exploration-and-Mapping.git

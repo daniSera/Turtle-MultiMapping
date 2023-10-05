@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Turtlebot3  
+  <include file="$(find multi_explore)/launch/include/multi_tb.launch">
+  </include>
+  --> 
+  
+  <!-- Arguments -->
+  <arg name="model" default="waffle" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="open_rviz" default="true"/> 
+  <arg name="assign_rate" default="2"/>
+  <arg name="save_point_cloud" default="false"/> <!-- Disable this to go faster -->
+
+  <arg name="first_tb3"  default="tb3_0"/>
+  <arg name="second_tb3" default="tb3_1"/>
+  <arg name="robot_name_list" default=" $(arg first_tb3),$(arg second_tb3)"/>
+
+  <arg name="first_tb3_x_pos" default="-3.13"/>
+  <arg name="first_tb3_y_pos" default=" 0.65"/>
+  <arg name="first_tb3_z_pos" default=" 0.00"/>
+  <arg name="first_tb3_yaw"   default=" 2.68"/>
+
+  <arg name="second_tb3_x_pos" default="-3.00"/>
+  <arg name="second_tb3_y_pos" default=" 1.77"/>
+  <arg name="second_tb3_z_pos" default=" 0.00"/>
+  <arg name="second_tb3_yaw"   default="-2.82"/>
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)">
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find multi_explore)/rviz/multi.rviz"/>
+  </group>
+  
+  <node pkg="multi_explore" type="assigner.py" name="assigner" output="screen">
+    <param name="robot_namelist" value="$(arg robot_name_list)"/>
+    <param name="tb3_0_x" value="$(arg first_tb3_x_pos)"/>
+    <param name="tb3_0_y" value="$(arg first_tb3_y_pos)"/>
+    <param name="tb3_1_x" value="$(arg second_tb3_x_pos)"/>
+    <param name="tb3_1_y" value="$(arg second_tb3_y_pos)"/>
+    <param name="assign_rate" value="$(arg assign_rate)"/>
+  </node>
+
+  <node pkg="multi_explore" type="robot_control.py" name="$(arg first_tb3)_controller" output="screen">
+    <param name="robot_name" value="$(arg first_tb3)"/>
+  </node>
+
+  <node pkg="multi_explore" type="robot_control.py" name="$(arg second_tb3)_controller" output="screen">
+    <param name="robot_name" value="$(arg second_tb3)"/>
+  </node>
+
+</launch>
