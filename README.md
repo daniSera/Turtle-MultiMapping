@@ -1,8 +1,9 @@
-# PiCar-QRMultiMapping
+# Turtle-MultiMapping
 
 ## Project Overview:
 
-_TBD_
+Final project of the course "Design Methods for Unmanned Vehicles" of University of Trento.
+This work aims at achieving autonomous exploration and mapping in an unknown environment by deploying multiple robots, each equipped with an RGB-D camera. The project has been developed as a ROS (Noetic) package, developed in Python3 and C++. _Turtlebot_ was used as robot model
 
 ## Installation Requirements
 
