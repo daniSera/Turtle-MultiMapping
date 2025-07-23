@@ -184,17 +184,3 @@ if white_contour_px > 0:
         os.system(convert_cmd)
 ```
 This will set the border as required. Be aware that changes might be required, depending on the dimension of the original QR-code.
-
-### Try the installaion
-
-To try the correct installation run
-
-```bash
-roslaunch multi_mapping turtlebot3_visp_world.launch
-```
-
-and in a different terminal, in order to move he robot
-
-```bash
-roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
-```
