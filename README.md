@@ -188,5 +188,37 @@ This will set the border as required. Be aware that changes might be required, d
 # Final Paper
 
 <p align="center" display="inblock">
-<img src="./images/simulation.png" alt="Simulation Environment" width="80%"> 
+<img src="./report/Final_paper/Final_paper1.png" alt="Page1" width="100%"> 
+</p>
+
+<p align="center" display="inblock">
+<img src="./report/Final_paper/Final_paper2.png" alt="Page2" width="100%"> 
+</p>
+
+<p align="center" display="inblock">
+<img src="./report/Final_paper/Final_paper3.png" alt="Page3" width="100%"> 
+</p>
+
+<p align="center" display="inblock">
+<img src="./report/Final_paper/Final_paper4.png" alt="Page4" width="100%"> 
+</p>
+
+<p align="center" display="inblock">
+<img src="./report/Final_paper/Final_paper5.png" alt="Page5" width="100%"> 
+</p>
+
+<p align="center" display="inblock">
+<img src="./report/Final_paper/Final_paper6.png" alt="Page6" width="100%"> 
+</p>
+
+<p align="center" display="inblock">
+<img src="./report/Final_paper/Final_paper7.png" alt="Page7" width="100%"> 
+</p>
+
+<p align="center" display="inblock">
+<img src="./report/Final_paper/Final_paper8.png" alt="Page8" width="100%"> 
+</p>
+
+<p align="center" display="inblock">
+<img src="./report/Final_paper/Final_paper9.png" alt="Page9" width="100%"> 
 </p>
