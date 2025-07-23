@@ -184,3 +184,9 @@ if white_contour_px > 0:
         os.system(convert_cmd)
 ```
 This will set the border as required. Be aware that changes might be required, depending on the dimension of the original QR-code.
+
+# Final Paper
+
+<p align="center" display="inblock">
+<img src="./images/simulation.png" alt="Simulation Environment" width="80%"> 
+</p>
